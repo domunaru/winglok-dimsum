@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winglok Hongkong Dimsum | Authentic Halal Dimsum 24 Jam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #C41E3A;
+            --dark-red: #8B0000;
+            --gold: #D4AF37;
+            --light-gold: #F4E4BC;
+            --cream: #FDF8F0;
+            --dark: #1A1A1A;
+            --charcoal: #2C2C2C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 4px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-chinese {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light-gold);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--primary-red);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            border: 2px solid var(--primary-red);
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--primary-red) !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .hamburger {
+            display: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(139,0,0,0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23D4AF37" stroke-width="0.5" opacity="0.1"/></svg>');
+            background-size: 100px 100px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            border: 1px solid var(--gold);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            display: block;
+            font-size: 3rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero-chinese {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--light-gold);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--primary-red);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-red);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* Floating Elements */
+        .floating-pattern {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 2px solid rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .floating-pattern:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-pattern:nth-child(2) {
+            bottom: 10%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header h2 span {
+            color: var(--primary-red);
+        }
+
+        .section-header .chinese-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: var(--primary-red);
+            margin: 1.5rem auto;
+            position: relative;
+        }
+
+        .divider::before, .divider::after {
+            content: '◆';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        .divider::before { left: -15px; }
+        .divider::after { right: -15px; }
+
+        /* About Section */
+        .about {
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '永';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 400px;
+            color: rgba(196, 30, 58, 0.03);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-red);
+        }
+
+        .feature-item i {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+        }
+
+        .feature-item span {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: linear-gradient(to bottom, var(--cream), white);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid var(--gold);
+            color: var(--dark);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .menu-tab.active, .menu-tab:hover {
+            background: var(--primary-red);
+            color: white;
+            border-color: var(--primary-red);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .menu-card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-red);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .menu-card-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover .menu-card-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-card-content {
+            padding: 1.5rem;
+        }
+
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .menu-card .chinese-name {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .menu-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .menu-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #eee;
+        }
+
+        .rating {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        /* Location Section */
+        .location-section {
+            background: var(--dark);
+            color: white;
+            position: relative;
+        }
+
+        .location-section .section-header h2 {
+            color: white;
+        }
+
+        .location-section .section-header p {
+            color: var(--light-gold);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .location-card i {
+            font-size: 2rem;
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        .location-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .location-card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .location-card a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .location-card a:hover {
+            color: var(--gold);
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 2px solid var(--gold);
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border: none;
+            filter: grayscale(20%) contrast(1.1);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            aspect-ratio: 1;
+            cursor: pointer;
+            group: gallery;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(196, 30, 58, 0.8), transparent);
+            display: flex;
+            align-items: end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--cream) 0%, white 100%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-red);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card .stars {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-card p {
+            color: #555;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+
+        .testimonial-author-info h4 {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .testimonial-author-info span {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Instagram Section */
+        .instagram-section {
+            background: var(--dark);
+            text-align: center;
+        }
+
+        .instagram-section .section-header h2 {
+            color: white;
+        }
+
+        .instagram-section .section-header .chinese-title {
+            color: var(--gold);
+        }
+
+        .instagram-feed {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .instagram-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .instagram-item::after {
+            content: '\f16d';
+            font-family: 'Font Awesome 6 Brands';
+            position: absolute;
+            inset: 0;
+            background: rgba(196, 30, 58, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .instagram-item:hover::after {
+            opacity: 1;
+        }
+
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(220, 39, 67, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo-chinese {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-red);
+            color: white;
+            border-color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(26, 26, 26, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero h1 span {
+                font-size: 2rem;
+            }
+
+            .about-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .instagram-feed {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: 2px solid var(--gold);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            background: var(--dark-red);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-chinese">永乐</span>
+                <span class="logo-text">WINGLOK</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#location">Lokasi</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="https://www.instagram.com/winglokdimsunofficial/" target="_blank" class="nav-cta"><i class="fab fa-instagram"></i> Follow IG</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-pattern"></div>
+        <div class="floating-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-badge">★ HALAL CERTIFIED ★</div>
+            <div class="hero-chinese">香港点心</div>
+            <h1>Winglok <span>Hongkong Dimsum</span></h1>
+            <p>Autentik Hong Kong-style Halal Dimsum. Buka 24 Jam. Pengalaman kuliner istimewa dengan resep tradisional yang telah teruji.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn-primary"><i class="fas fa-utensils"></i> Lihat Menu</a>
+                <a href="https://www.instagram.com/winglokdimsunofficial/" target="_blank" class="btn-secondary"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header fade-in">
+            <div class="chinese-title">关于我们</div>
+            <h2>Tentang <span>Winglok</span></h2>
+            <div class="divider"></div>
+            <p>Restoran dimsum Hong Kong autentik dengan cita rasa yang tak terlupakan</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Winglok Interior">
+            </div>
+            <div class="about-content fade-in">
+                <h3>Tradisi Hong Kong di Jakarta</h3>
+                <p>Winglok Hongkong Dimsum menghadirkan pengalaman kuliner autentik Hong Kong-style dimsum yang 100% Halal. Berdiri sejak tahun 2020, kami telah melayani ribuan pelanggan dengan cita rasa terbaik.</p>
+                <p>Dengan konsep restoran yang nyaman dan modern, kami menyajikan lebih dari 30 varian dimsum klasik dan modern yang disiapkan oleh chef berpengalaman langsung dari resep turun-temurun.</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Buka 24 Jam</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>100% Halal</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-award"></i>
+                        <span>Resep Autentik</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <span>Cocok untuk Group</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="section-header fade-in">
+            <div class="chinese-title">精选菜单</div>
+            <h2>Menu <span>Andalan</span></h2>
+            <div class="divider"></div>
+            <p>Pilihan dimsum terbaik dengan harga terjangkau</p>
+        </div>
+        
+        <div class="menu-tabs fade-in">
+            <button class="menu-tab active" onclick="filterMenu('all')">Semua</button>
+            <button class="menu-tab" onclick="filterMenu('steam')">Steam Dimsum</button>
+            <button class="menu-tab" onclick="filterMenu('fried')">Fried Dimsum</button>
+            <button class="menu-tab" onclick="filterMenu('rice')">Rice & Noodles</button>
+            <button class="menu-tab" onclick="filterMenu('dessert')">Dessert</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <!-- Steam Items -->
+            <div class="menu-card fade-in" data-category="steam">
+                <div class="menu-card-badge">BEST SELLER</div>
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hakau">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Hakau Udang</h3>
+                            <div class="chinese-name">水晶鲜虾饺</div>
+                        </div>
+                        <div class="price">25K</div>
+                    </div>
+                    <p>Dimsum klasik dengan kulit transparan dan isi udang segar yang juicy</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.9)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">3 pcs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card fade-in" data-category="steam">
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Siao Mai">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Siao Mai Ayam</h3>
+                            <div class="chinese-name">鲜虾蒸烧卖</div>
+                        </div>
+                        <div class="price">22K</div>
+                    </div>
+                    <p>Siomay ayam dengan topping udang, disajikan dalam bamboo steamer hangat</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.8)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">4 pcs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card fade-in" data-category="steam">
+                <div class="menu-card-badge">FAVORITE</div>
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bakpao Telur Asin">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Bakpao Telur Asin</h3>
+                            <div class="chinese-name">咸蛋流沙包</div>
+                        </div>
+                        <div class="price">23K</div>
+                    </div>
+                    <p>Bakpao lembut dengan isian telur asin yang lumer dan gurih</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span style="color: #666; margin-left: 5px;">(5.0)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">3 pcs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card fade-in" data-category="steam">
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ceker Ayam">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Ceker Ayam</h3>
+                            <div class="chinese-name">奇味蒸凤爪</div>
+                        </div>
+                        <div class="price">22K</div>
+                    </div>
+                    <p>Ceker ayam empuk bumbu khas Hong Kong dengan saus tausi</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.6)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">3 pcs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fried Items -->
+            <div class="menu-card fade-in" data-category="fried">
+                <div class="menu-card-badge">POPULAR</div>
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Udang Goreng">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Udang Goreng Crispy</h3>
+                            <div class="chinese-name">香脆炸虾</div>
+                        </div>
+                        <div class="price">25K</div>
+                    </div>
+                    <p>Udang segar dibalut tepung crispy, goreng hingga keemasan</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.7)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">3 pcs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card fade-in" data-category="fried">
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1625220194771-7eb906b5b422?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lumpia">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Lumpia Udang Ayam</h3>
+                            <div class="chinese-name">鲜虾腐皮卷</div>
+                        </div>
+                        <div class="price">22K</div>
+                    </div>
+                    <p>Lumpia goreng isi udang dan ayam dengan kulit tahu yang renyah</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.5)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">3 pcs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rice & Noodles -->
+            <div class="menu-card fade-in" data-category="rice">
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nasi">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Nasi Ayam Hainan</h3>
+                            <div class="chinese-name">海南鸡饭</div>
+                        </div>
+                        <div class="price">35K</div>
+                    </div>
+                    <p>Nasi harum dengan ayam rebus tender dan saus khas Hainan</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.8)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">Single</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card fade-in" data-category="rice">
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mie">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Mie Ayam Tao Si</h3>
+                            <div class="chinese-name">面豉鸡肉面</div>
+                        </div>
+                        <div class="price">40K</div>
+                    </div>
+                    <p>Mie homemade dengan ayam tao si dan kuah kaldu yang gurih</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.9)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">Single</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dessert -->
+            <div class="menu-card fade-in" data-category="dessert">
+                <div class="menu-card-badge">SWEET</div>
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mantau">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Mantau Goreng</h3>
+                            <div class="chinese-name">炸馒头</div>
+                        </div>
+                        <div class="price">18K</div>
+                    </div>
+                    <p>Roti mantau goreng dengan saus kental manis, dessert klasik Hong Kong</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.9)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">3 pcs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card fade-in" data-category="dessert">
+                <div class="menu-card-image">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kue">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <div>
+                            <h3>Kue Pandan</h3>
+                            <div class="chinese-name">班兰糕</div>
+                        </div>
+                        <div class="price">25K</div>
+                    </div>
+                    <p>Kue lapis pandan lembut dengan aroma pandan yang harum</p>
+                    <div class="menu-card-footer">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.7)</span>
+                        </div>
+                        <span style="color: #888; font-size: 0.85rem;">3 pcs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section" id="location">
+        <div class="section-header fade-in">
+            <div class="chinese-title">我们的位置</div>
+            <h2>Lokasi <span>Kami</span></h2>
+            <div class="divider"></div>
+            <p>Kunjungi kami di lokasi strategis Jakarta Selatan</p>
+        </div>
+        <div class="location-grid">
+            <div class="location-info fade-in">
+                <div class="location-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Alamat</h3>
+                    <p>Jl. Pangeran Antasari No.88, RT.7/RW.7, Cipete Sel., Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12410</p>
+                    <a href="https://maps.google.com/?q=Jl.+Pangeran+Antasari+No.88+Jakarta+Selatan" target="_blank">
+                        <i class="fas fa-directions"></i> Buka di Google Maps
+                    </a>
+                </div>
+                <div class="location-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Jam Operasional</h3>
+                    <p><strong style="color: var(--gold);">24 Jam Nonstop</strong><br>Setiap hari, termasuk hari libur nasional</p>
+                </div>
+                <div class="location-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Kontak & Reservasi</h3>
+                    <p>Telepon: (021) 7654-3210<br>WhatsApp: 0812-3456-7890</p>
+                    <a href="https://wa.me/6281234567890" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="map-container fade-in">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.035!2d106.802!3d-6.291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1c5cfffffff%3A0x1234567890abcdef!2sJl.%20Pangeran%20Antasari%20No.88!5e0!3m2!1sid!2sid!4v1234567890" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-header fade-in">
+            <div class="chinese-title">画廊</div>
+            <h2>Galeri <span>Kuliner</span></h2>
+            <div class="divider"></div>
+            <p>Momen-momen istimewa di Winglok</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dimsum 1">
+                <div class="gallery-overlay"><span>Hakau Premium</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dimsum 2">
+                <div class="gallery-overlay"><span>Steam Basket</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dimsum 3">
+                <div class="gallery-overlay"><span>Bakpao Series</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dimsum 4">
+                <div class="gallery-overlay"><span>Crispy Prawn</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dimsum 5">
+                <div class="gallery-overlay"><span>Ceker Premium</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1625220194771-7eb906b5b422?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dimsum 6">
+                <div class="gallery-overlay"><span>Lumpia Udang</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dimsum 7">
+                <div class="gallery-overlay"><span>Mie Special</span></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dimsum 8">
+                <div class="gallery-overlay"><span>Dessert Mantau</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header fade-in">
+            <div class="chinese-title">客户评价</div>
+            <h2>Testimoni <span>Pelanggan</span></h2>
+            <div class="divider"></div>
+            <p>Apa kata mereka tentang Winglok</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card fade-in">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Hakau dan Bakpao Telur Asin-nya juara! Kulitnya tipis dan isinya melimpah. Tempatnya juga nyaman untuk makan malam bersama keluarga."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                    <div class="testimonial-author-info">
+                        <h4>Sarah Amalia</h4>
+                        <span>Food Blogger</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Buka 24 jam itu nilai plus banget! Sering kesini buat midnight snack. Siomay ayam dan cekernya recommended banget."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                    <div class="testimonial-author-info">
+                        <h4>Budi Santoso</h4>
+                        <span>Regular Customer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"Restoran halal dengan cita rasa Hong Kong autentik. Harganya reasonable untuk kualitas dimsum sekelas ini. Mantau gorengnya perfect!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User">
+                    <div class="testimonial-author-info">
+                        <h4>Dewi Kusuma</h4>
+                        <span>@dewieats</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram-section">
+        <div class="section-header fade-in">
+            <div class="chinese-title">关注我们</div>
+            <h2>Ikuti Kami di <span style="color: var(--primary-red);">Instagram</span></h2>
+            <div class="divider"></div>
+            <p style="color: #aaa;">@winglokdimsunofficial</p>
+        </div>
+        <div class="instagram-feed fade-in">
+            <div class="instagram-item">
+                <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="IG 1">
+            </div>
+            <div class="instagram-item">
+                <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="IG 2">
+            </div>
+            <div class="instagram-item">
+                <img src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="IG 3">
+            </div>
+            <div class="instagram-item">
+                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="IG 4">
+            </div>
+            <div class="instagram-item">
+                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="IG 5">
+            </div>
+            <div class="instagram-item">
+                <img src="https://images.unsplash.com/photo-1625220194771-7eb906b5b422?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="IG 6">
+            </div>
+        </div>
+        <a href="https://www.instagram.com/winglokdimsunofficial/" target="_blank" class="instagram-btn fade-in">
+            <i class="fab fa-instagram"></i> Follow @winglokdimsunofficial
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-chinese" style="color: var(--primary-red);">永乐</div>
+                <h3 style="font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.5rem; margin-bottom: 1rem;">Winglok Dimsum</h3>
+                <p>Autentik Hong Kong-style Halal Dimsum. Menyajikan pengalaman kuliner terbaik dengan resep tradisional sejak 2020.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/winglokdimsunofficial/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/6281234567890"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Menu</h4>
+                <ul>
+                    <li><a href="#menu"><i class="fas fa-chevron-right"></i> Steam Dimsum</a></li>
+                    <li><a href="#menu"><i class="fas fa-chevron-right"></i> Fried Dimsum</a></li>
+                    <li><a href="#menu"><i class="fas fa-chevron-right"></i> Rice & Noodles</a></li>
+                    <li><a href="#menu"><i class="fas fa-chevron-right"></i> Dessert</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Tautan</h4>
+                <ul>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                    <li><a href="#location"><i class="fas fa-chevron-right"></i> Lokasi</a></li>
+                    <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Galeri</a></li>
+                    <li><a href="https://www.instagram.com/winglokdimsunofficial/"><i class="fas fa-chevron-right"></i> Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Kontak</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Antasari, Jakarta Selatan</a></li>
+                    <li><a href="tel:02176543210"><i class="fas fa-phone"></i> (021) 7654-3210</a></li>
+                    <li><a href="mailto:info@winglok.id"><i class="fas fa-envelope"></i> info@winglok.id</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> 24 Jam Nonstop</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> 2026 Winglok Hongkong Dimsum. All Rights Reserved. | Made with <i class="fas fa-heart" style="color: var(--primary-red);"></i> in Jakarta</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Scroll to top button
+        const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Menu Filter
+        function filterMenu(category) {
+            const cards = document.querySelectorAll('.menu-card');
+            const tabs = document.querySelectorAll('.menu-tab');
+
+            // Update active tab
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent.toLowerCase().includes(category) || 
+                    (category === 'all' && tab.textContent === 'Semua')) {
+                    tab.classList.add('active');
+                }
+            });
+
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
